@@ -1,27 +1,36 @@
 {
   "name": "grasp",
   "version": "1.0.0",
-  "description": "grasp thesis project",
-  "main": "app.js",
+  "description": "Interactive drag-and-drop Javascript tutorial webapp!",
+  "main": "hi.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thesis-hr34/Grasp.git"
+    "url": "git+https://github.com/aboutabel/Grasp.git"
   },
-  "keywords": [
-    "grasp"
-  ],
-  "author": "Will Henshaw",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thesis-hr34/Grasp/issues"
+    "url": "https://github.com/aboutabel/Grasp/issues"
   },
-  "homepage": "https://github.com/thesis-hr34/Grasp#readme",
+  "homepage": "https://github.com/aboutabel/Grasp#readme",
   "dependencies": {
+    "react": "^0.14.3",
     "express": "^4.13.3",
     "knex": "^0.9.0",
     "pg": "^4.4.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "file-loader": "^0.8.5",
+    "react-dom": "^0.14.3",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }
