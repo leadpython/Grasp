@@ -2,20 +2,20 @@
   "name": "grasp",
   "version": "1.0.0",
   "description": "Interactive drag-and-drop Javascript tutorial webapp!",
-  "main": "hi.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aboutabel/Grasp.git"
+    "url": "git+https://github.com/thesis-34/Grasp.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aboutabel/Grasp/issues"
+    "url": "https://github.com/thesis-34/Grasp/issues"
   },
-  "homepage": "https://github.com/aboutabel/Grasp#readme",
+  "homepage": "https://github.com/thesis-34/Grasp#readme",
   "dependencies": {
     "react": "^0.14.3",
     "express": "^4.13.3",
