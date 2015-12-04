@@ -5,7 +5,7 @@ module.exports = {
   users: {
      signin: function (params, callback) {
       console.log("in here")
-      db('users').insert([{username: 'Dyn'}, {firstname: "Liam"}, {secondname: "Gallagher"}, {hashedpw: crypt('blue', gen_salt('md5'))}]).then(function(ret){
+      db('users').insert([{username: 'Dyn'}, {firstname: "Liam"}, {secondname: "Gallagher"}, {hashedpw: crypt("blue", gen_salt("md5"))}]).then(function(ret){
           console.log("success")
         });
       db.select().table('users').then(function (result) {
