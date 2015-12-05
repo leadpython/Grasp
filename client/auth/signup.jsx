@@ -32,6 +32,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signupContainer">
+      <h1>SIGNUP</h1>
         <form onSubmit={this.createUser}>
           <input id="signupUsername" type="text" placeholder="Enter your username..." />
           <input id="signupPassword" type="password" placeholder="Enter your password..." />

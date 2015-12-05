@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Greeting from "./greeting.jsx";
+import SignupForm from "./auth/signup.jsx"
 
 ReactDOM.render(
-  <Greeting name="World"/>,
+  <SignupForm />,
   document.getElementById('app')
 );
