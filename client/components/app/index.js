@@ -1,11 +1,17 @@
 import React from 'react';
 import {} from './style.less';
-import SignupForm from '../auth/signup.js'; 
+import SignupForm from '../signup';
+import LoginForm from '../login';
+import Header from '../header';
 
 class App extends React.Component {
   render() {
     return (
-      <div><SignupForm /></div>
+      <div>
+        <Header />
+        <SignupForm />
+        <LoginForm />
+      </div>
     );
   }
 }
