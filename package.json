@@ -4,9 +4,9 @@
   "description": "Interactive drag-and-drop Javascript tutorial webapp!",
   "main": "/dist/bundle.js",
   "scripts": {
-    "start-dev": "NODE_ENV=development nodemon --exec babel-node index.js -e js,handlebars",
-    "webpack-dev": "babel-node webpack.development.js"
-  }
+    "start": "NODE_ENV=development nodemon --exec babel-node index.js -e js,handlebars",
+    "webpack": "babel-node webpack.development.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thesis-hr34/Grasp.git"
