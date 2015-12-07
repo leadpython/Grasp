@@ -17,11 +17,14 @@ import App from './generated/app';
 
 // SERVER SETUP ================================
 const app = express();
-const port = process.env.PORT || 3000; 
 
 // Set view templates
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars({
+  defaultLayout: 'main',
+  layoutsDir: path.resolve(__dirname, 'views/layouts')
+}));
 app.set('view engine', 'handlebars');
+app.set('views', path.resolve(__dirname, 'views'));
 
 // Set static assets
 app.use(express.static(path.resolve(__dirname, '../dist')));
@@ -53,6 +56,5 @@ app.get('/', (request, response) => {
 });
 // Database middleware 
 // app.use("/api/user", router);
+export default app; 
 
-// INITIALIZE SERVER ==========================
-app.listen(port, () => console.log('Server running'));
