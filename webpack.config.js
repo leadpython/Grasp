@@ -17,6 +17,7 @@ export const cssLoader = {
 };
 
 export const aliases = {
+  containers: path.resolve(CLIENT_DIR, 'containers'),
   components: path.resolve(CLIENT_DIR, 'components'),
   reducers: path.resolve(CLIENT_DIR, 'reducers'),
   actions: path.resolve(CLIENT_DIR, 'actions')
@@ -47,7 +48,7 @@ export const server = {
   target: 'node',
   context: CLIENT_DIR,
   entry: {
-    app: 'components/app/index.js'
+    app: 'containers/app/index.js'
   },
   output: {
     path: SERVER_DIR,

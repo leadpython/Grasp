@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 // App
-import App from 'components/app';
+import App from 'containers/app';
 import reducers from 'reducers';
 
 // Grab the state from a global injected into server-generated HTML
