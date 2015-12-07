@@ -4,7 +4,8 @@
   "description": "Interactive drag-and-drop Javascript tutorial webapp!",
   "main": "/dist/bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=development nodemon --exec babel-node index.js -e js,handlebars",
+    "webpack": "babel-node webpack.development.js"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,13 @@
   },
   "homepage": "https://github.com/thesis-hr34/Grasp#readme",
   "dependencies": {
-    "react": "^0.14.3",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "knex": "^0.9.0",
-    "pg": "^4.4.3"
+    "pg": "^4.4.3",
+    "react": "^0.14.3",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",

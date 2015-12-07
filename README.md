@@ -7,9 +7,9 @@
 
 ## Team
 
-  - __Product Owner__: 
-  - __Scrum Master__: 
-  - __Development Team Members__: 
+  - __Product Owner__: Jeff Campecino, Will Henshaw 
+  - __Scrum Master__: Abel Wang
+  - __Development Team Members__: Abel Wang, Jeff Campecino, Will Henshaw
 
 ## Table of Contents
 
