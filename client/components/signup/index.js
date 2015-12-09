@@ -15,17 +15,17 @@ class SignupForm extends React.Component {
       password: document.getElementById('signupPassword').value,
       email: document.getElementById('signupEmail').value
     };
-    Request
-     .post('http://localhost:3000/api/signup')
-     .send(userData)
-     .end(function(err, res){
-       if (res.ok) {
-        //redender log in page
-         alert('yay got ' + JSON.stringify(res.body));
-       } else {
-         alert('Oh no! error ' + res.text);
-       }
-     });
+    // Request
+    //  .post('http://localhost:3000/api/signup')
+    //  .send(userData)
+    //  .end(function(err, res){
+    //    if (res.ok) {
+    //     //redender log in page
+    //      alert('yay got ' + JSON.stringify(res.body));
+    //    } else {
+    //      alert('Oh no! error ' + res.text);
+    //    }
+    //  });
 
 
     alert("Username:\n" + document.getElementById('signupUsername').value + "\n\nPassword:\n" + document.getElementById('signupPassword').value + "\n\nEmail:\n" + document.getElementById("signupEmail").value);

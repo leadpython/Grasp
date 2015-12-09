@@ -15,12 +15,19 @@ import SignupForm from '../client/components/signup';
 import LoginForm from '../client/components/login';
 
 // Database 
-// import db from './models/connection.js';
-// import dbsetup from './models/dbsetup.js';
+import db from './models/connection.js';
+import dbsetup from './models/dbsetup.js';
 // import router from './routes.js';
+
+//for parsing
+import bodyParser from 'body-parser';
 
 // SERVER SETUP ================================
 const app = express();
+
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+//parsing set up
 
 // Set view templates
 app.engine('handlebars', handlebars({
@@ -103,7 +110,11 @@ app.get('/login', (request, response) => {
         <LoginForm />
       </App>
     </Provider>
-  ); 
+  );
+
+  app.post('/api/signup', (request, response) => {
+    console.log("request.body")
+  });
 
   // JSON string representation of initialState is created and passed
   // as a parameter to the app template so that the state can be shared
