@@ -19,9 +19,6 @@ import LoginForm from '../client/components/login';
 // import dbsetup from './models/dbsetup.js';
 // import router from './routes.js';
 
-//parsing
-
-import bodyParser from 'body-parser';
 // SERVER SETUP ================================
 const app = express();
 
@@ -36,11 +33,6 @@ app.set('views', path.resolve(__dirname, 'views'));
 // Set static assets
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use("/css", express.static(__dirname + '/css'));
-
-//parsing
-app.use(bodyParser.urlencoded());
-
-app.use(bodyParser.json());
 
 // ROUTES =====================================
 // Static HTML on page load 
@@ -96,7 +88,6 @@ app.get('/signup', (request, response) => {
   });
 });
 
-<<<<<<< HEAD
 app.get('/login', (request, response) => {
   // Initialize state on page load
   const initialState = {
@@ -121,21 +112,9 @@ app.get('/login', (request, response) => {
     app: appContent, 
     initialState: JSON.stringify(initialState)
   });
-=======
-app.post('/', (request, response) => {
-  console.log("A post request!", request.body);
-  db('users').insert( {username: request.body.username,
-          firstname: request.body.firstname,
-          secondname: request.body.secondname,
-          email: request.body.email,
-          hashedpw: db.raw( "crypt('"+ request.body.username + "', gen_salt('md5'))" )}).then(function(ret){
-          console.log("success")
-          // callback(ret);
-        });
-  // response.send("Hello")
->>>>>>> Added server changes
 });
 
 // Database middleware 
 // app.use("/api/user", router);
 export default app; 
+

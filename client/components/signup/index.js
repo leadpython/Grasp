@@ -16,10 +16,11 @@ class SignupForm extends React.Component {
       email: document.getElementById('signupEmail').value
     };
     Request
-     .post('http://localhost:3000')
+     .post('http://localhost:3000/api/signup')
      .send(userData)
      .end(function(err, res){
        if (res.ok) {
+        //redender log in page
          alert('yay got ' + JSON.stringify(res.body));
        } else {
          alert('Oh no! error ' + res.text);

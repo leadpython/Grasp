@@ -16,11 +16,58 @@ message-actions module and make them available in a single object */
 import * as messageActionCreators from 'actions/message-actions';
 
 class App extends React.Component {
+  switchPage() {
+    ReactDOM.render(
+  // Provider makes store instance available to all Components
+    <Provider store={store}>
+      <App />
+    </Provider>
+    , document.getElementById('form'));
+  }
   render() {
     return (
       <div>
         <Header />
+<<<<<<< HEAD
         {this.props.children}
+=======
+        <div id="form">
+          <SignupForm />
+        </div>
+        <form onSubmit={this.switchPage}>
+          <input type="submit" value="SWITCH" />
+        </form>
+        <MessageList messages={this.props.messages}/>
+        <MessageEntryBox
+          value={this.props.currentMessage}
+          onChange={this.props.updateMessage}
+          onSubmit={this.props.addMessage}/>
+        <AddTodo
+          onAddClick={text =>
+            console.log('add todo', text)
+          } />
+        <TodoList
+          todos={
+            [
+              {
+                text: 'Use Redux',
+                completed: true
+              },
+              {
+                text: 'Learn to connect it to React',
+                completed: false
+              }
+            ]
+          }
+          onTodoClick={index =>
+            console.log('todo clicked', index)
+          } />
+        <Footer
+          filter='SHOW_ALL'
+          onFilterChange={filter =>
+            console.log('filter change', filter)
+          } />
+>>>>>>> Got post requests working
       </div>
     );
   }

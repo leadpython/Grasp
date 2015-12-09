@@ -3,42 +3,38 @@ var db = require('./connection.js'); //set up database connection
 
 module.exports = {
   users: {
-     signin: function (params, callback) {
-      console.log("in here")
-      // db('users').insert([
-      //   {username: 'wow'}, 
-      //   {firstname: "Liam"}, {secondname: "Gallagher"}, 
-      //   {hashedpw: db.raw( "crypt('blue', gen_salt('md5'))" )}
-      //   ]).then(function(ret){
-      //     console.log("success")
-      //   });
-      // db('users').where('username', 'wo')
-      // .then(function (res) {
-      //   console.log('result', res)
-      // })
+     signin: function (request, callback) {
       db('users').
-      where( db.raw("Upper('username')"), 'like', '%' + params[0] + '%').
-      where({
-        hashedpw: db.raw( "crypt('"+ params[1] + "', hashedpw)")
-      }).select()
+      where( 'username', request.body.username ).
+      andWhere({
+        hashedpw: db.raw( "crypt('"+ request.body.password + "', hashedpw)")
+      })
+      .select()
       .then(function (res) {
-        console.log(res);
-        callback(res)
+        console.log("in here...",res);
+        callback(null, res)
       })
       .catch(function (error){
-      callback(error)
+      callback(error, null)
     });
     
       },
-      signup: function (params, callback) {
-        db('users').insert( {username: params[0],
-          firstname: params[1],
-          secondname: params[2],
-          hashedpw: db.raw( "crypt('"+ params[3] + "', gen_salt('md5'))" )}).then(function(ret){
-          console.log("success")
-          callback(ret);
-        });
-      }
-    }
+      signup: function (request, callback) {
+          db('users').insert( {username: request.body.username,
+          firstname: request.body.firstname,
+          secondname: request.body.secondname,
+          email: request.body.email,
+          hashedpw: db.raw( "crypt('"+ request.body.username + "', gen_salt('md5'))" )}).then(function(ret){
+        })
+          .then(function (res) {
+            callback(null, res);
+          })
+          .catch(function(error) {
+            callback(error, null);
+          });
 
-  };
+        }
+      }
+
+    }
+        

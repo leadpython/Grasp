@@ -16,8 +16,9 @@ module.exports = {
     post: function (req, res) {
       console.log("username....", req.body);
       params = [req.body.username, req.body.firstname, req.body.secondname, req.body.password]; //this is temporary
-      models.users.signup(params, function(results) {
+      models.users.signup(params, function(err, results) {
         console.log(results);
+        if(err) { res.sendStatus(401)}
         res.status(201).send(results);// sends status of 201 and results of get request to client
       });
     }
