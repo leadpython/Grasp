@@ -10,6 +10,10 @@ import ReactDOMServer from 'react-dom/server';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import App from './generated/app';
+
+import SignupForm from '../client/components/signup';
+import LoginForm from '../client/components/login';
+
 // Database 
 // import db from './models/connection.js';
 // import dbsetup from './models/dbsetup.js';
@@ -28,6 +32,7 @@ app.set('views', path.resolve(__dirname, 'views'));
 
 // Set static assets
 app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use("/css", express.static(__dirname + '/css'));
 
 // ROUTES =====================================
 // Static HTML on page load 
@@ -42,7 +47,9 @@ app.get('/', (request, response) => {
   const appContent = ReactDOMServer.renderToString(
     // Provider wraps App and provides access to store
     <Provider store={store}>
-      <App />
+      <App>
+        <a href="/login"><button style={{fontSize: '50px'}}>ENTER SITE</button></a>
+      </App>
     </Provider>
   ); 
 
@@ -54,6 +61,59 @@ app.get('/', (request, response) => {
     initialState: JSON.stringify(initialState)
   });
 });
+
+app.get('/signup', (request, response) => {
+  // Initialize state on page load
+  const initialState = {
+    currentMessage: '',
+    messages: []
+  };
+  // Instantiate Redux store that returns initial state
+  const store = createStore((state=initialState) => state);
+  const appContent = ReactDOMServer.renderToString(
+    // Provider wraps App and provides access to store
+    <Provider store={store}>
+      <App>
+        <SignupForm />
+      </App>
+    </Provider>
+  ); 
+
+  // JSON string representation of initialState is created and passed
+  // as a parameter to the app template so that the state can be shared
+  // with the client. 
+  response.render('app', {
+    app: appContent, 
+    initialState: JSON.stringify(initialState)
+  });
+});
+
+app.get('/login', (request, response) => {
+  // Initialize state on page load
+  const initialState = {
+    currentMessage: '',
+    messages: []
+  };
+  // Instantiate Redux store that returns initial state
+  const store = createStore((state=initialState) => state);
+  const appContent = ReactDOMServer.renderToString(
+    // Provider wraps App and provides access to store
+    <Provider store={store}>
+      <App>
+        <LoginForm />
+      </App>
+    </Provider>
+  ); 
+
+  // JSON string representation of initialState is created and passed
+  // as a parameter to the app template so that the state can be shared
+  // with the client. 
+  response.render('app', {
+    app: appContent, 
+    initialState: JSON.stringify(initialState)
+  });
+});
+
 // Database middleware 
 // app.use("/api/user", router);
 export default app; 

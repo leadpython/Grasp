@@ -25,6 +25,8 @@ class SignupForm extends React.Component {
           <input id="signupLastname" type="text" placeholder="Enter your last name..." /> <br /><br />
           <input id="createAccount" type="submit" value="CREATE ACCOUNT" />
         </form>
+        <br/>
+        Already have an account? <a href="/login"> LOGIN!</a>
       </div>
     );
   }

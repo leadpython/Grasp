@@ -22,6 +22,8 @@ class LoginForm extends React.Component {
           <input id="signupPassword" type="password" placeholder="Enter your password..." /> <br /><br />
           <input id="login" type="submit" value="LOGIN" />
         </form>
+        <br/>
+        Do not have an account? <a href="/signup"> SIGNUP!</a>
       </div>
     );
   }
