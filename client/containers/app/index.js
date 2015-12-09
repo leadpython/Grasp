@@ -20,38 +20,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <SignupForm />
-        <LoginForm />
-        <MessageList messages={this.props.messages}/>
-        <MessageEntryBox
-          value={this.props.currentMessage}
-          onChange={this.props.updateMessage}
-          onSubmit={this.props.addMessage}/>
-        <AddTodo
-          onAddClick={text =>
-            console.log('add todo', text)
-          } />
-        <TodoList
-          todos={
-            [
-              {
-                text: 'Use Redux',
-                completed: true
-              },
-              {
-                text: 'Learn to connect it to React',
-                completed: false
-              }
-            ]
-          }
-          onTodoClick={index =>
-            console.log('todo clicked', index)
-          } />
-        <Footer
-          filter='SHOW_ALL'
-          onFilterChange={filter =>
-            console.log('filter change', filter)
-          } />
+        {this.props.children}
       </div>
     );
   }
