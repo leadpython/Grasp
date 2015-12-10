@@ -19,6 +19,8 @@ import db from './models/connection.js';
 import dbsetup from './models/dbsetup.js';
 // import router from './routes.js';
 
+import models from './models'
+
 //for parsing
 import bodyParser from 'body-parser';
 
@@ -112,10 +114,6 @@ app.get('/login', (request, response) => {
     </Provider>
   );
 
-  app.post('/api/signup', (request, response) => {
-    console.log("request.body")
-  });
-
   // JSON string representation of initialState is created and passed
   // as a parameter to the app template so that the state can be shared
   // with the client. 
@@ -124,6 +122,31 @@ app.get('/login', (request, response) => {
     initialState: JSON.stringify(initialState)
   });
 });
+
+app.post('/api/signup', (request, response) => {
+  models.users.signup(request, function (err, result) {
+    if(err) {
+      response.send(err.detail).status(409);
+    } else {
+      response.sendStatus(201);
+    }
+  })
+})
+
+app.post('/api/signin', (request, response) => {
+    models.users.signin(request, function (err, result) {
+    if(err) {
+      console.log(err)
+      response.send(err.detail).status(409);
+    } else if (result.length === 0) {
+      response.sendStatus(409)
+      throw new Error("Sign in failed")
+    } else {
+      response.send(result).status(201)
+      //render canvas
+    }
+  })
+})
 
 // Database middleware 
 // app.use("/api/user", router);

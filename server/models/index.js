@@ -11,11 +11,10 @@ module.exports = {
       })
       .select()
       .then(function (res) {
-        console.log("in here...",res);
-        callback(null, res)
+        callback(null, res);
       })
       .catch(function (error){
-      callback(error, null)
+      callback(error, null);
     });
     
       },
@@ -24,7 +23,8 @@ module.exports = {
           firstname: request.body.firstname,
           secondname: request.body.secondname,
           email: request.body.email,
-          hashedpw: db.raw( "crypt('"+ request.body.username + "', gen_salt('md5'))" )}).then(function(ret){
+          hashedpw: db.raw( "crypt('"+ request.body.password + "', gen_salt('md5'))" )})
+          .then(function(ret){
         })
           .then(function (res) {
             callback(null, res);
@@ -32,9 +32,7 @@ module.exports = {
           .catch(function(error) {
             callback(error, null);
           });
-
         }
       }
-
-    }
+    };
         
