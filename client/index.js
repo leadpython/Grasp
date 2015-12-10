@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // Redux 
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 // App
 import App from 'containers/app';
@@ -12,13 +12,18 @@ import reducers from 'reducers';
 // Routing Related
 import { Router, Route } from 'react-router'
 import { createHistory } from 'history'
-import { syncReduxAndRouter, routeReducer } from 'redux-simple-router'
+import { syncReduxAndRouter } from 'redux-simple-router';
+
+import {  routeReducer } from 'redux-simple-router';
 // import reducers from './reducers'
+
+import SignupForm from './components/signup';
+import LoginForm from './components/login';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
   routing: routeReducer
 }))
-const history = createHistory()
+const history = createHistory();
 
 // Grab the state from a global injected into server-generated HTML
 const initialState = window.INITIAL_STATE; 
