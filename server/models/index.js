@@ -1,20 +1,38 @@
 var db = require('./connection.js'); //set up database connection
 //this is responsible for communicating with the database
+
 module.exports = {
   users: {
-     signin: function (params, callback) {
-      console.log("in here")
-      // db('users').insert({firstname: "Will"}).then(function(ret){
-      //     console.log("success")
-      //   });
-      db.select().table('users').then(function (result) {
-        console.log("in here....", result)
-        callback(err, result);
-      }).catch(function (error){
-        console.log(error)
-      });
+     signin: function (request, callback) {
+      db('users').
+      where( 'username', request.body.username ).
+      andWhere({
+        hashedpw: db.raw( "crypt('"+ request.body.password + "', hashedpw)")
+      })
+      .select()
+      .then(function (res) {
+        callback(null, res);
+      })
+      .catch(function (error){
+      callback(error, null);
+    });
     
+      },
+      signup: function (request, callback) {
+          db('users').insert( {username: request.body.username,
+          firstname: request.body.firstname,
+          secondname: request.body.secondname,
+          email: request.body.email,
+          hashedpw: db.raw( "crypt('"+ request.body.password + "', gen_salt('md5'))" )})
+          .then(function(ret){
+        })
+          .then(function (res) {
+            callback(null, res);
+          })
+          .catch(function(error) {
+            callback(error, null);
+          });
+        }
       }
-    }
-
-  };
+    };
+        

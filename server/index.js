@@ -15,12 +15,21 @@ import SignupForm from '../client/components/signup';
 import LoginForm from '../client/components/login';
 
 // Database 
-// import db from './models/connection.js';
-// import dbsetup from './models/dbsetup.js';
+import db from './models/connection.js';
+import dbsetup from './models/dbsetup.js';
 // import router from './routes.js';
+
+import models from './models'
+
+//for parsing
+import bodyParser from 'body-parser';
 
 // SERVER SETUP ================================
 const app = express();
+
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+//parsing set up
 
 // Set view templates
 app.engine('handlebars', handlebars({
@@ -103,7 +112,7 @@ app.get('/login', (request, response) => {
         <LoginForm />
       </App>
     </Provider>
-  ); 
+  );
 
   // JSON string representation of initialState is created and passed
   // as a parameter to the app template so that the state can be shared
@@ -113,6 +122,31 @@ app.get('/login', (request, response) => {
     initialState: JSON.stringify(initialState)
   });
 });
+
+app.post('/api/signup', (request, response) => {
+  models.users.signup(request, function (err, result) {
+    if(err) {
+      response.send(err.detail).status(409);
+    } else {
+      response.sendStatus(201);
+    }
+  })
+})
+
+app.post('/api/signin', (request, response) => {
+    models.users.signin(request, function (err, result) {
+    if(err) {
+      console.log(err)
+      response.send(err.detail).status(409);
+    } else if (result.length === 0) {
+      response.sendStatus(409)
+      throw new Error("Sign in failed")
+    } else {
+      response.send(result).status(201)
+      //render canvas
+    }
+  })
+})
 
 // Database middleware 
 // app.use("/api/user", router);
